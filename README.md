@@ -14,4 +14,7 @@
 **但是，除了Google Play上面，其他的都需要版权证明，需要费用。**
 
 ## activity starter
-
+Activity Starter可以打开手机上任何的APP甚至是APP里的任何activity。
+有两种方法，两种方法只取其一，在Designer和Blocks界面赋值的效果是相同的：
+* 一种是给action赋值
+* 一种是给ActivityClass和ActivityPackage赋值
