@@ -13,8 +13,47 @@
 
 **但是，除了Google Play上面，其他的都需要版权证明，需要费用。**
 
-## activity starter
+## [activity starter](http://ai2inventor.blogspot.com/2016/12/using-activity-starter-component.html)
 Activity Starter可以打开手机上任何的APP甚至是APP里的任何activity。
-有两种方法，两种方法只取其一，在Designer和Blocks界面赋值的效果是相同的：
+有两种方法，两种方法只取其一，在Designer和Blocks界面赋值的效果是相同的(如果是要调用默认的app,就不要把Designer界面的ExternalApp勾上）：
 * 一种是给action赋值
-* 一种是给ActivityClass和ActivityPackage赋值
+    * Open a facebook:
+    	* Action: android.intent.action.VIEW (Starts an app)
+    	* DataUri: http://www.facebook.com 8 (The URL. If you forget the “http://” or “https://” it won’t work and will give you an error)
+    * Play a YT video:
+    	* Action: android.intent.VIEW
+    	* DataUri: vnd.youtube:video id here (starts playing a YT video)
+    *  to open the phone’s browser to a designated web page
+    	* Action: android.intent.action.VIEW
+    	* DataUri: http://mit.edu
+    * To start the Android mailer application
+	* Action: android.intent.action.VIEW
+	* DataUri: mailto:santa@northpole.com
+    * to show a map of the area
+	* Action: android.intent.action.VIEW
+	* DataUri: geo:37.8,-122.23?z=10
+    * If you know a zip code of a location, you can set the activity starter properties as follows:
+	* Action: android.intent.action.VIEW
+	* DataUri: geo:0,0?q=94043
+    * If you have a street address, you can use a DataUri that encodes the address with a scheme called URL encoding :
+	* Action: android.intent.action.VIEW
+	* DataUri: geo:0,0?q=77+Massachusetts+Avenue%2C+Cambridge%2C+MA
+    * Select a contact
+	* Action: android.intent.action.PICK
+    * Starting  an external app to pick files
+	* Action: android.intent.action.PICK
+	* dataType: vnd.android.cursor.dir/lysesoft.andexplorer.file
+	* dataURI: file:///sdcard
+* 一种是给ActivityClass和ActivityPackage赋值（注意用这种方法赋值时候，Datauri和aaction都不必清空）。
+
+给上述的参数赋值的标准方法是用logcat，在手机上进行想要的操作，然后通过查找`/.*START.* eudic`来确定上述的参数，手机上的"activity manager"可以用来参考要查找的名称。  
+对于查找到的片段，
+* 比如`04-29 17:59:09.872  1404 16355 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.eusoft.eudic/com.eusoft.dict.activity.SplashActivity bnds=[128,866][387,1126]} from uid 10028 on display 0`
+	* `act=android.intent.action.MAIN` 表示action是`android.intent.action.MAIN`
+	* `cmp=com.eusoft.eudic/com.eusoft.dict.activity.SplashActivity`表示ActivityClass是`com.eusoft.dict.activity.SplashActivity`,ActivityPackage是`com.eusoft.eudic`
+* `I/ActivityManager(   86): Starting activity: Intent { act=android.intent.action.VIEW dat=vnd.youtube:nAPk9ycCbfc cmp=com.google.android.youtube/.PlayerActivity }`
+  * If you can find the "cmp=" string, then the ActivityPackage is the part before the slash, e.g.,  com.google.android.youtube.  The ActivityClass is is the entire "cmp=" part, without the slash character, e.g., com.google.android.youtube.PlayerActivity.   There may also in general be "dat=" information that should be specify as the DataUri property.
+* Use these parameter to open a profile page or an image directly with Instagram app
+    * [instagram-button](instagram-button.JPG)
+    * [instagram-image-id](instagram-image-id.JPG)
+??? permission denial when opening xiaocao???
