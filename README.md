@@ -5,6 +5,7 @@
 ## 技巧
 - 用数据库的不变性来进行各屏幕之间的参数传递
 - 切换屏幕的时候要记得关闭本屏幕
+    - [Rember to close the current screen](closecurrentscreen.jpg)
 ## 发布
 * `https://play.google.com/apps/publish/?account=5934462972948485741#ManageReleaseTrackPlace:p=appinventor.ai_cdutboy928.schedule_english&appid=4974029659287825923&releaseTrackId=4701037977174453843`
 * `http://app.baidu.com/apps`
@@ -57,3 +58,17 @@ Activity Starter可以打开手机上任何的APP甚至是APP里的任何activit
     * [instagram-button](instagram-button.JPG)
     * [instagram-image-id](instagram-image-id.JPG)
 ??? permission denial when opening xiaocao???
+
+## Use player component instead of audio component to avoid the "Error 703: Unable to play *.mp3" error
+## how to delay in app inventor
+* [how to delay](delay.jpg)
+* [how to delay for a custom time](delaytime.jpg)
+## 有时候枚举法反而更方便
+[枚举](枚举.jpg)
+## list
+* 读取从csv文件并按每一列生成一个列表 
+    * [读csv为列表](读csv为列表.jpg)
+    * 如果csv文件有多列，则每一行是作为一个item的
+## about loop
+But the general rule is: if a loop will last more than a couple of seconds avoid using for or while loops in App Inventor.Taifun's Clock Timer solution will work for continuous polling which is what you are doing.The difference is, that in your case, you would not need a counter variable.
+* [use a clock component for loop](clockloop.jpg)
